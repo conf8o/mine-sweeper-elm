@@ -2,7 +2,7 @@ module TableTest exposing (..)
 
 import Expect exposing (Expectation)
 import Test exposing (..)
-import Table exposing (..)
+import Model.Table exposing (..)
 import Set
 import Array
 
@@ -13,7 +13,7 @@ testInitTable =
         "initTable"
         (\_ ->
             let
-                {table} = Table.initTable (2, 2) (Set.fromList [(0, 0), (1, 1)])
+                {container} = Model.Table.initTable (2, 2) (Set.fromList [(0, 0), (1, 1)])
                 expect =
                     [
                         [(Closed, Bomb), (Closed, Hint 2)],
@@ -22,5 +22,5 @@ testInitTable =
                     |> List.map Array.fromList
                     |> Array.fromList
             in
-                Expect.equal expect table
+                Expect.equal expect container
         )
